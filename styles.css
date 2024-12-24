@@ -1,0 +1,141 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #cce7ff, #ffebcc);
+  overflow-x: hidden;
+}
+
+.gallery-container {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 10px;
+  font-weight: 300;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+  border-radius: 15px;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1.2rem;
+}
+
+/* Background animation */
+.background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Prevent interaction with elements */
+  z-index: -1;
+}
+
+.seasonal-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: opacity 1s ease; /* Smooth fade-in/out */
+  pointer-events: none; /* Prevent interactions */
+}
+
+.spring-petals,
+.summer-rays,
+.autumn-leaves,
+.winter-snowflakes {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  pointer-events: auto; /* Allow interaction with seasonal elements */
+  animation: float 10s infinite ease-in-out;
+}
+
+.spring-petals img,
+.summer-rays img,
+.autumn-leaves img,
+.winter-snowflakes img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Click-to-burst animation */
+@keyframes burst {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.25;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.bursting {
+  animation: burst 0.5s forwards;
+  z-index: 1000; /* Ensure it's above all other elements */
+  position: absolute; /* Ensure it doesn't affect other elements' flow */
+  pointer-events: none; /* Prevent it from blocking clicks on other elements */
+  animation-fill-mode: forwards; /* Keeps the element in the final state of the animation */
+}
+
+
+/* Ensure elements are visible even when bursting */
+.spring-petals,
+.summer-rays,
+.autumn-leaves,
+.winter-snowflakes {
+  animation-delay: 0s; /* Default animation delay (will be randomized in JS) */
+}
+
+
+
+
+
+
+
+  
